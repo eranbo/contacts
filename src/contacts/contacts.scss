@@ -1,0 +1,27 @@
+.contacts {
+  .contacts-header {
+    background-color: #20b8ea;
+    padding: 8pt 16pt;
+    font-weight: 500;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 30pt;
+
+    .search-input {
+      border: none;
+      border-radius: 10pt;
+      width: 200pt;
+      padding-left: 8pt;
+    }
+
+    .icon-search {
+      position: relative;
+      left: -20pt;
+    }
+  }
+
+  .contact {
+    background-color: white;
+  }
+}
