@@ -6,7 +6,7 @@ import professional from '../../images/professional.svg';
 export default class ContactItem extends Component {
     constructor(props) {
         super(props);
-        switch (this.props.driver.type) {
+        switch (this.props.driver.driverType.trim().toLowerCase()) {
             case "citizen":
                 this.src = citizen;
                 break;
@@ -21,9 +21,10 @@ export default class ContactItem extends Component {
 
     render() {
         const driver = this.props.driver;
+        const driverImageSrc = driver.profile_image ? driver.profile_image : "https://cdn.hswstatic.com/gif/teen-driver-safety-hp-orig.jpg";
         return (
             <div className="contact-item">
-                <img src="https://cdn.hswstatic.com/gif/teen-driver-safety-hp-orig.jpg" alt="driver" className="image"/>
+                <img src={driverImageSrc} alt="driver" className="image"/>
                 <div className="driver-information-container">
                     <div className="driver-information">
                         {this.src ?
@@ -31,10 +32,10 @@ export default class ContactItem extends Component {
                             : null}
 
                         <div className='text'>
-                            <span className="text-item full-name">{driver.fullName}</span>
-                            <span className="text-item sub-info">{driver.rank}</span>
-                            <span className="text-item sub-info">Phone Number: {driver.phoneNumber}</span>
-                            <span className="text-item sub-info">Email: {driver.email}</span>
+                            <span className="text-item full-name">{driver.name || 'N/A'}</span>
+                            <span className="text-item sub-info">Rank: {driver.rank || 'N/A'}</span>
+                            <span className="text-item sub-info">Phone Number: {driver.phone || 'N/A'}</span>
+                            <span className="text-item sub-info">Email: {driver.email || 'N/A'}</span>
                         </div>
                     </div>
                 </div>

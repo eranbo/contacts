@@ -17,16 +17,18 @@ export default class Contacts extends Component {
 
     async componentDidMount() {
         this.drivers = await contactsSrv.getDriversAsync();
+        console.log(this.drivers);
         this.setState({drivers: this.drivers});
     }
 
     filter() {
         let filteredDrivers = _.filter(this.drivers, driver => {
             return (
-                _.includes(driver.type.toLowerCase(), this.state.searchPhrase.toLowerCase()) ||
-                _.includes(driver.fullName.toLowerCase(), this.state.searchPhrase.toLowerCase()) ||
-                _.includes(driver.email.toLowerCase(), this.state.searchPhrase.toLowerCase()) ||
-                _.includes(driver.phoneNumber, this.state.searchPhrase)
+
+                _.includes(_.get(driver, 'driverType', '').toLowerCase(), this.state.searchPhrase.toLowerCase()) ||
+                _.includes(_.get(driver, 'name', '').toLowerCase(), this.state.searchPhrase.toLowerCase()) ||
+                _.includes(_.get(driver, 'email', '').toLowerCase(), this.state.searchPhrase.toLowerCase()) ||
+                _.includes(_.get(driver, 'phone', ''), this.state.searchPhrase)
             )
         });
 
@@ -48,9 +50,9 @@ export default class Contacts extends Component {
     }
 
     render() {
-        let contactItems = this.state.drivers.map(driver => {
+        let contactItems = this.state.drivers.map((driver, index) => {
             return (
-                <Col lg="3" key={driver.id}>
+                <Col lg="3" key={index}>
                     <ContactItem driver={driver}/>
                 </Col>
             )
