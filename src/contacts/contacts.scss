@@ -7,6 +7,9 @@
     flex-direction: row;
     justify-content: space-between;
     margin-bottom: 30pt;
+    position: fixed;
+    width: 100%;
+    z-index: 999;
 
     .search-input {
       border: none;
@@ -19,6 +22,10 @@
       position: relative;
       left: -20pt;
     }
+  }
+
+  .contacts-container {
+    padding-top: 40pt;
   }
 
   .contact {

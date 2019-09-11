@@ -65,7 +65,7 @@ export default class Contacts extends Component {
                         <i className={"fas icon-search " + (_.isEmpty(this.state.searchPhrase) ? "fa-search" : "fa-times")} onClick={this.onClickSearchIcon.bind(this)}></i>
                     </span>
                 </div>
-                <Container>
+                <Container className="contacts-container">
                     <Row className="justify-content-lg-left">
                         {contactItems}
                     </Row>
