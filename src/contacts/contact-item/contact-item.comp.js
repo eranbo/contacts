@@ -24,7 +24,8 @@ export default class ContactItem extends Component {
         const driverImageSrc = driver.profile_image ? driver.profile_image : "https://cdn.hswstatic.com/gif/teen-driver-safety-hp-orig.jpg";
         return (
             <div className="contact-item">
-                <img src={driverImageSrc} alt="driver" className="image"/>
+                <div className="image-container" style={{backgroundImage:`url(${driverImageSrc})`}}>
+                </div>
                 <div className="driver-information-container">
                     <div className="driver-information">
                         {this.src ?
